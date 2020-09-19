@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "500455516847",
+    "firebase_url": "https://fancyfood-ae3f4.firebaseio.com",
+    "project_id": "fancyfood-ae3f4",
+    "storage_bucket": "fancyfood-ae3f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500455516847:android:c0448f15767835fe27025a",
+        "android_client_info": {
+          "package_name": "com.example.fancyfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500455516847-lbnmomb9qsp8pil6f2q6tpfeotfdvg3n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXeoClIkS2uvsQO8FEz3uXFkByyaxCt1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500455516847-lbnmomb9qsp8pil6f2q6tpfeotfdvg3n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
