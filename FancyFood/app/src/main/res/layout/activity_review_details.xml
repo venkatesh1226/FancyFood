@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:scrollbarSize="10dp"
+    android:layout_height="match_parent"
+    tools:context=".ReviewResInfo">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv"
+            android:src="@drawable/res_image"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rn_id"
+            android:layout_below="@+id/iv"
+            android:text="RESTAURANT NAME:"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurant_name"
+            android:layout_below="@+id/rn_id"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ra_id"
+            android:text="RESTAURANT ADDRESS:"
+            android:layout_below="@+id/restaurant_name"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurant_address"
+            android:layout_below="@+id/ra_id"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_get_details"
+            android:layout_below="@+id/restaurant_address"
+            android:text="GET DETAILS"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_restaurant"
+            android:text="hello"
+            android:layout_below="@+id/btn_get_details"
+            android:textSize="200dp"
+            />
+    </RelativeLayout>
+</ScrollView>
