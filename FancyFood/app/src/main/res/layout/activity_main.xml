@@ -11,14 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RESTAURANT INFO"
-        android:id="@+id/id_r_info"
+        android:id="@+id/id_r_info1"
+        android:textStyle="italic"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorPrimaryDark"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id_r_info"
+        android:layout_below="@+id/id_r_info1"
         android:text="Restaurant Nme:"
         android:id="@+id/id_r_name"
         />
@@ -27,13 +28,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_r_name"
         android:hint="Please enter your restaurant name here"
-        android:id="@+id/restaurant_name"
+        android:id="@+id/restaurant_name1"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
-        android:layout_below="@+id/restaurant_name"
+        android:layout_below="@+id/restaurant_name1"
         android:id="@+id/id_r_address"
         />
     <EditText
@@ -41,13 +42,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_r_address"
         android:hint="Please enter your restaurant address here"
-        android:id="@+id/restaurant_address"
+        android:id="@+id/restaurant_address1"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/id_r_years"
-        android:layout_below="@+id/restaurant_address"
+        android:layout_below="@+id/restaurant_address1"
         android:text="In which year the reataurant was started:"
         />
     <EditText
@@ -67,6 +68,31 @@
         android:onClick="nextButton"
         android:id="@+id/next_button"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/restaurant_year_started"
+        android:text="Would you like to add th employees?"
+        android:id="@+id/id_employees"
+        />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_employees"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="YES"/>
+        <RadioButton
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NO"
+            />
+
+    </RadioGroup>
 
 
 
