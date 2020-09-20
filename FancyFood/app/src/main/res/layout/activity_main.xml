@@ -11,15 +11,12 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="500dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
-
-        
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -44,14 +41,14 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:text="Email"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editemail"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/email"
                 android:layout_centerVertical="true"
@@ -71,14 +68,15 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/passimage"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
                 android:layout_below="@id/password"
                 android:src="@drawable/ic_visibility_on"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editpassword"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/password"
                 android:layout_toLeftOf="@id/passimage"
