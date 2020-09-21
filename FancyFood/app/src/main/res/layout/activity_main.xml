@@ -1,100 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:padding="10dp"
-    android:background="@drawable/gradient_amber">
+    android:scrollIndicators="right"
+    android:scrollbarSize="10dp"
+    android:visibility="visible"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RESTAURANT INFO"
-        android:id="@+id/id_r_info1"
-        android:textStyle="italic"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryDark"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_r_info1"
-        android:text="Restaurant Nme:"
-        android:id="@+id/id_r_name"
-        />
-    <EditText
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_r_name"
-        android:hint="Please enter your restaurant name here"
-        android:id="@+id/restaurant_name1"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Address:"
-        android:layout_below="@+id/restaurant_name1"
-        android:id="@+id/id_r_address"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_r_address"
-        android:hint="Please enter your restaurant address here"
-        android:id="@+id/restaurant_address1"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_r_years"
-        android:layout_below="@+id/restaurant_address1"
-        android:text="In which year the reataurant was started:"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_r_years"
-        android:hint="enter your year"
-        android:id="@+id/restaurant_year_started"
-        android:inputType="number"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:text="NEXT"
-        android:onClick="nextButton"
-        android:id="@+id/next_button"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/restaurant_year_started"
-        android:text="Would you like to add th employees?"
-        android:id="@+id/id_employees"
-        />
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_employees"
-        >
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="YES"/>
-        <RadioButton
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/id_r_info1"
             android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NO"
-            />
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/lemonada_bold"
+            android:text="RESTAURANT  INFO"
+            android:background="@drawable/gradient_amber"
+            android:textColor="#020202"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:drawableTint="#FFFFFF" />
 
-    </RadioGroup>
+        <TextView
+            android:id="@+id/id_r_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_r_info1"
+            android:padding="10dp"
+            android:text="Restaurant Name:"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/restaurant_name1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_r_name"
+            android:hint="Please enter your restaurant name here"
+            android:padding="10dp"
+            android:textStyle="italic" />
 
+        <TextView
+            android:id="@+id/id_r_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_name1"
+            android:padding="10dp"
+            android:text="Address:"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/restaurant_address1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_r_address"
+            android:hint="Please enter your restaurant address here"
+            android:padding="10dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/id_r_years"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_address1"
+            android:padding="10dp"
+            android:text="In which year the reataurant was started:"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/restaurant_year_started"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="10dp"
+            android:hint="Enter your year"
+            android:maxLength="4"
+            android:layout_below="@+id/id_r_years"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/id_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_year_started"
+            android:padding="10dp"
+            android:text="Area:"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_area"
+            android:hint="Enter your area"
+            android:padding="10dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/id_phno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/area"
+            android:padding="10dp"
+            android:text="Phone Number"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/id_india_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_phno"
+            android:padding="10dp"
+            android:text="+91"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_phno"
+            android:layout_toRightOf="@+id/id_india_number"
+            android:hint="Enter your phone number"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:textStyle="italic" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next_button"
+            android:layout_below="@+id/id_india_number"
+            android:text="NEXT"
+            android:onClick="nextButton"/>
+
+    </RelativeLayout>
+
+</ScrollView>
