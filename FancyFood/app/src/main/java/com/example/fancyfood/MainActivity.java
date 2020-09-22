@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout =findViewById(R.id.ll);
         rYear = findViewById(R.id.restaurant_year_started);
         rCuisines = findViewById(R.id.cuisines_offered);
+        getSupportActionBar().setLogo(R.drawable.ic_save);
 
     }
     public void browsingFiles(View view){
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         iv.setImageURI(imageUriList.get(imageUriList.size()-1));
         linearLayout.addView(iv);
     }
-    public void nextButton(View view){
+  /* public void nextButton(View view){
         TextView btnNext = findViewById(R.id.next_button);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,5 +86,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,ReviewDetails.class));
             }
         });
-    }
+    }*/
 }

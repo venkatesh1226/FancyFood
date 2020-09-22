@@ -5,6 +5,7 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fadeScrollbars="false"
     android:padding="10dp"
     android:scrollIndicators="right"
     android:scrollbarSize="10dp"
@@ -12,18 +13,19 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/rela"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/id_r_info1"
-            android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/lemonada_bold"
-            android:text="RESTAURANT  INFO"
             android:background="@drawable/gradient_amber"
+            android:fontFamily="@font/lemonada_bold"
+            android:padding="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="RESTAURANT  INFO"
             android:textColor="#020202"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -34,17 +36,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/id_r_info1"
+            android:fontFamily="@font/abhaya_libre_bold"
+            android:foregroundGravity="left|center"
             android:padding="10dp"
             android:text="Restaurant Name:"
             android:textColor="#0C0C0C"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/restaurant_name1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/id_r_name"
-            android:hint="Please enter your restaurant name here"
+            android:hint="Please enter your restaurant name"
             android:padding="10dp"
             android:textStyle="italic" />
 
@@ -53,10 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/restaurant_name1"
+            android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Address:"
             android:textColor="#0C0C0C"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/restaurant_address1"
@@ -72,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/restaurant_address1"
+            android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="In which year the reataurant was started:"
             android:textColor="#0C0C0C"
@@ -81,11 +87,11 @@
             android:id="@+id/restaurant_year_started"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:padding="10dp"
-            android:hint="Enter your year"
-            android:maxLength="4"
             android:layout_below="@+id/id_r_years"
+            android:hint="Enter your year"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="10dp"
             android:textStyle="italic" />
 
         <TextView
@@ -93,10 +99,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/restaurant_year_started"
+            android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Area:"
             android:textColor="#0C0C0C"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/area"
@@ -112,16 +119,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/area"
+            android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
-            android:text="Phone Number"
+            android:text="Phone Number:"
             android:textColor="#0C0C0C"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/id_india_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/id_phno"
+            android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="+91"
             android:textColor="#0C0C0C"
@@ -138,13 +147,52 @@
             android:maxLength="10"
             android:padding="10dp"
             android:textStyle="italic" />
-        <Button
+
+        <TextView
+            android:id="@+id/id_cuisines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/next_button"
             android:layout_below="@+id/id_india_number"
-            android:text="NEXT"
-            android:onClick="nextButton"/>
+            android:fontFamily="@font/abhaya_libre_bold"
+            android:padding="10dp"
+            android:text="Cuisines Offered:"
+            android:textColor="#0C0C0C"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/cuisines_offered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_cuisines"
+            android:hint="Enter your cuisines here"
+            android:padding="10dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/add_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cuisines_offered"
+            android:fontFamily="@font/abhaya_libre_bold"
+            android:padding="10dp"
+            android:text="Add some photos of your restaurant"
+            android:textColor="#0C0C0C"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_add_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_photos"
+            android:onClick="browsingFiles"
+            android:text="BROWSE FILES" />
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btn_add_photos"
+            android:orientation="vertical" />
 
     </RelativeLayout>
 

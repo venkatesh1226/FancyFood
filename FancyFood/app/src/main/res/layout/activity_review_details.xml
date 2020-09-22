@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:scrollbarSize="10dp"
     android:layout_height="match_parent"
-    tools:context=".ReviewResInfo">
+    tools:context=".ReviewDetails">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -51,13 +51,11 @@
             android:layout_below="@+id/restaurant_address"
             android:text="GET DETAILS"
             />
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/about_restaurant"
             android:text="hello"
-            android:layout_below="@+id/btn_get_details"
-            android:textSize="200dp"
-            />
+            android:layout_below="@+id/btn_get_details" />
     </RelativeLayout>
 </ScrollView>
