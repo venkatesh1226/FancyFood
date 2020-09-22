@@ -20,11 +20,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class DialogAddMenuItem extends DialogFragment {
     ImageView imgDish;
     EditText edtName,edtPrice;
     Button btnBrowse,btnCancel,btnAdd;
     TextView txtImage;
+    DatabaseReference ref;
+    Uri uri;
     public static final int PICK_IMAGE=404;
 
     @Nullable
@@ -72,6 +80,12 @@ public class DialogAddMenuItem extends DialogFragment {
 
                 }
                 else{
+                    ref= FirebaseDatabase.getInstance().getReference();
+                    String id=ref.push().getKey();
+                    Item item=new Item(id,edtName.getText().toString(),uri.toString(),edtPrice.getText().toString());
+                    ref.child(id).setValue(item);
+
+
                     Toast.makeText(getContext(), "Successfully Added "+edtName.getText().toString(), Toast.LENGTH_SHORT).show();
                     dismiss();
                 }
@@ -91,6 +105,7 @@ public class DialogAddMenuItem extends DialogFragment {
         if(requestCode==PICK_IMAGE&&resultCode== Activity.RESULT_OK&&null !=data.getData()){
             imgDish.setVisibility(View.VISIBLE);
             imgDish.setImageURI(data.getData());
+            uri=data.getData();
             txtImage.setText("Edit Photo");
 
         }
