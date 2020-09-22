@@ -5,11 +5,10 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="false"
+    android:fadeScrollbars="true"
     android:padding="10dp"
     android:scrollIndicators="right"
     android:scrollbarSize="10dp"
-    android:visibility="visible"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -17,14 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
             android:id="@+id/id_r_info1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/gradient_amber"
             android:fontFamily="@font/lemonada_bold"
             android:padding="20dp"
-            android:layout_centerHorizontal="true"
             android:text="RESTAURANT  INFO"
             android:textColor="#020202"
             android:textSize="25sp"
@@ -193,6 +193,16 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/btn_add_photos"
             android:orientation="vertical" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:foreground="@drawable/ic_next"
+            android:onClick="nextButton" />
 
     </RelativeLayout>
 
