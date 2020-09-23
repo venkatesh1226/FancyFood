@@ -1,61 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:scrollbarSize="10dp"
+    android:orientation="horizontal"
     android:layout_height="match_parent"
     tools:context=".ReviewDetails">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:padding="10dp"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="10dp"
+        android:id="@+id/res_images"
+        android:scrollIndicators="bottom"
+        >
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/iv"
-            android:src="@drawable/res_image"
+            android:id="@+id/ll_images"
+            android:orientation="horizontal"
             />
-        <TextView
+    </HorizontalScrollView>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="10dp"
+        android:layout_below="@+id/res_images"
+        android:scrollIndicators="right"
+        >
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rn_id"
-            android:layout_below="@+id/iv"
-            android:text="RESTAURANT NAME:"
-            android:textSize="25sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/restaurant_name"
-            android:layout_below="@+id/rn_id"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ra_id"
-            android:text="RESTAURANT ADDRESS:"
-            android:layout_below="@+id/restaurant_name"
-            android:textSize="25sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/restaurant_address"
-            android:layout_below="@+id/ra_id"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_get_details"
-            android:layout_below="@+id/restaurant_address"
-            android:text="GET DETAILS"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/about_restaurant"
-            android:text="hello"
-            android:layout_below="@+id/btn_get_details" />
-    </RelativeLayout>
-</ScrollView>
+            android:id="@+id/review_res_info"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/review_res_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/advent_pro"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/advent_pro"
+                android:textSize="20sp"
+                android:id="@+id/review_res_address"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/advent_pro"
+                android:id="@+id/review_res_year"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/advent_pro"
+                android:id="@+id/review_res_area"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/advent_pro"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:id="@+id/review_res_phoneno"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/advent_pro"
+                android:id="@+id/review_res_cuisines"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

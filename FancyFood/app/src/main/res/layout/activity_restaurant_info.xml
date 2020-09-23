@@ -9,16 +9,16 @@
     android:padding="10dp"
     android:scrollIndicators="right"
     android:scrollbarSize="10dp"
-    tools:context=".MainActivity">
+    tools:context=".RestaurantInfo">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rela"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <TextView
-            android:id="@+id/id_r_info1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -35,7 +35,6 @@
             android:id="@+id/id_r_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_r_info1"
             android:fontFamily="@font/abhaya_libre_bold"
             android:foregroundGravity="left|center"
             android:padding="10dp"
@@ -44,19 +43,17 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/restaurant_name1"
+            android:id="@+id/restaurant_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_r_name"
             android:hint="Please enter your restaurant name"
             android:padding="10dp"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/id_r_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/restaurant_name1"
+            android:layout_below="@+id/restaurant_name"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Address:"
@@ -64,19 +61,16 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/restaurant_address1"
+            android:id="@+id/restaurant_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_r_address"
             android:hint="Please enter your restaurant address here"
             android:padding="10dp"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/id_r_years"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/restaurant_address1"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="In which year the reataurant was started:"
@@ -87,7 +81,6 @@
             android:id="@+id/restaurant_year_started"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_r_years"
             android:hint="Enter your year"
             android:inputType="number"
             android:maxLength="4"
@@ -95,10 +88,8 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/id_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/restaurant_year_started"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Area:"
@@ -109,7 +100,6 @@
             android:id="@+id/area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_area"
             android:hint="Enter your area"
             android:padding="10dp"
             android:textStyle="italic" />
@@ -126,10 +116,8 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/id_india_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_phno"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="+91"
@@ -140,8 +128,6 @@
             android:id="@+id/phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_phno"
-            android:layout_toRightOf="@+id/id_india_number"
             android:hint="Enter your phone number"
             android:inputType="number"
             android:maxLength="10"
@@ -149,10 +135,8 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/id_cuisines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_india_number"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Cuisines Offered:"
@@ -163,13 +147,11 @@
             android:id="@+id/cuisines_offered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/id_cuisines"
             android:hint="Enter your cuisines here"
             android:padding="10dp"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/add_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cuisines_offered"
@@ -185,7 +167,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/add_photos"
             android:onClick="browsingFiles"
-            android:text="BROWSE FILES" />
+            android:text="BROWSE FILES"
+            android:focusable="true"/>
 
         <LinearLayout
             android:id="@+id/ll"
@@ -193,17 +176,21 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/btn_add_photos"
             android:orientation="vertical" />
-
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:clickable="true"
             android:foreground="@drawable/ic_next"
-            android:onClick="nextButton" />
-
-    </RelativeLayout>
+            android:onClick="nextButton"
+            app:backgroundTint="#1DA5E3"
+            app:backgroundTintMode="screen" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>

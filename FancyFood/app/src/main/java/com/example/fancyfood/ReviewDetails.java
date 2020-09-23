@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,43 +26,28 @@ public class ReviewDetails extends AppCompatActivity {
 
     ArrayList<Uri> imagesUriList;
     LinearLayout linearLayout,ll;
+    TextView resName,resAddress,resYear,resArea,resPhoneno,resCuisines;
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_details);
-        TextView resName = new TextView(this);
-        TextView th=findViewById(R.id.hello);
-        th.setText("tuytuyuy");
-        TextView resAddress = new TextView(this);
-        TextView resYear = new TextView(this);
-        TextView resArea = new TextView(this);
-        TextView resPhoneno = new TextView(this);
-        TextView resCuisines = new TextView(this);
         Bundle bundle = getIntent().getExtras();
         imagesUriList = (ArrayList<Uri>) getIntent().getSerializableExtra("uriList");
         linearLayout = findViewById(R.id.ll_images);
         ll = findViewById(R.id.review_res_info);
-        resName.setLayoutParams(params);
-        resAddress.setLayoutParams(params);
-        resYear.setLayoutParams(params);
-        resArea.setLayoutParams(params);
-        resPhoneno.setLayoutParams(params);
-        resCuisines.setLayoutParams(params);
-        if(bundle!=null) {
+        resName = findViewById(R.id.review_res_name);
+        resAddress = findViewById(R.id.review_res_address);
+        resYear = findViewById(R.id.review_res_year);
+        resArea = findViewById(R.id.review_res_area);
+        resPhoneno = findViewById(R.id.review_res_phoneno);
+        resCuisines = findViewById(R.id.review_res_cuisines);
             resName.setText(bundle.getString("resName"));
             resAddress.setText(bundle.getString("resAddress"));
             resYear.setText(bundle.getString("resYear"));
             resArea.setText(bundle.getString("resArea"));
             resPhoneno.setText(bundle.getString("resPhoneno"));
             resCuisines.setText(bundle.getString("resCuisines"));
-        }
-        ll.addView(resName);
-        ll.addView(resAddress);
-        ll.addView(resYear);
-        ll.addView(resArea);
-        ll.addView(resPhoneno);
-        ll.addView(resCuisines);
         if(imagesUriList.size()!=0)
         {
             for(int i=0;i<imagesUriList.size();i++)
