@@ -41,7 +41,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
     protected void onBindViewHolder(@NonNull MenuViewHolder holder, final int i, @NonNull final Item item) {
 
 
-        holder.dishImage.setImageURI(Uri.parse(item.getImage()));
+        //holder.dishImage.setImageURI(Uri.parse(item.getImage()));
         holder.txtName.setText("Name -"+item.getName());
         holder.txtPrice.setText("Price -"+String.valueOf(item.getPrice()));
         holder.delete.setOnClickListener(new View.OnClickListener(){
