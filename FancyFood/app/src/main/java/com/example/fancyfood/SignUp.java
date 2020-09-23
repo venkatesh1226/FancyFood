@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class SignUp extends AppCompatActivity {
     EditText etEmail,etPassword,etConfirm;
    TextView tvSignIn;
-   FloatingActionButton buSignUp;
+   //FloatingActionButton buSignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class SignUp extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etConfirm = findViewById(R.id.etConfirm);
         tvSignIn = findViewById(R.id.tvSignIn);
-        buSignUp = findViewById(R.id.buSignUp);
+        //buSignUp = findViewById(R.id.buSignUp);
     }
 
 
