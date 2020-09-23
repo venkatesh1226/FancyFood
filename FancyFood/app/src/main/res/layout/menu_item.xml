@@ -68,7 +68,7 @@
             android:text="Delete"
             android:layout_marginTop="10dp"
             android:drawablePadding="10dp"
-            android:backgroundTint="@color/ic_delete_background"
+            android:backgroundTint="#FD0404"
             android:layout_below="@+id/edit"
             android:layout_alignParentEnd="true"/>
 
