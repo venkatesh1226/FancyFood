@@ -29,7 +29,7 @@ public class MenuItemsActivity extends AppCompatActivity {
     void init(){
         fab=findViewById(R.id.fab_add);
         menu=findViewById(R.id.list);
-        ref=FirebaseDatabase.getInstance().getReference();
+        ref=FirebaseDatabase.getInstance().getReference().child("Menu/");
         FirebaseRecyclerOptions<Item> options=
                 new FirebaseRecyclerOptions.Builder<Item>()
                 .setQuery(ref,Item.class)
@@ -37,7 +37,7 @@ public class MenuItemsActivity extends AppCompatActivity {
         menuItem=new MenuItem(options);
         menu.setLayoutManager(new LinearLayoutManager(this));
         menu.setAdapter(menuItem);
-        Log.e("ERROE","in Menu");
+
     }
     void listeners(){
         fab.setOnClickListener(new View.OnClickListener()
@@ -48,7 +48,6 @@ public class MenuItemsActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(),"CreateAddMenuDialog");
             }
         });
-        menu.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

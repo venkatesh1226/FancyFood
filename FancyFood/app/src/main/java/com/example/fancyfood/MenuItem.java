@@ -22,6 +22,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -41,9 +43,9 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
     protected void onBindViewHolder(@NonNull MenuViewHolder holder, final int i, @NonNull final Item item) {
 
 
-        holder.dishImage.setImageURI(Uri.parse(item.getImage()));
-        holder.txtName.setText("Name -"+item.getName());
-        holder.txtPrice.setText("Price -"+String.valueOf(item.getPrice()));
+        Glide.with(context).load(Uri.parse(item.getImage())).override(100,120).into(holder.dishImage);
+        holder.txtName.setText(item.getName());
+        holder.txtPrice.setText(String.valueOf(item.getPrice())+"₹");
         holder.delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -65,7 +67,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
 
         context=parent.getContext();
         final View view = LayoutInflater.from(context).inflate(menu_item,parent,false);
-        ref=FirebaseDatabase.getInstance().getReference();
+        ref=FirebaseDatabase.getInstance().getReference().child("Menu/");
         return new MenuViewHolder(view);
     }
 
@@ -77,7 +79,13 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if (item.getPrice()==693){
+                            Toast.makeText(context, "You Cant be deleted \uD83D\uDD95", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         ref.child(item.getId()).removeValue();
+                        final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child(item.getId()+"/");
+                        imgRef.delete();
                         Toast.makeText(context, "Deleted "+item.getName(), Toast.LENGTH_SHORT).show();
                     }
                 })

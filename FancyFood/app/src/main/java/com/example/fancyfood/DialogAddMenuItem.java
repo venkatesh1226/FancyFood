@@ -20,11 +20,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
 
 public class DialogAddMenuItem extends DialogFragment {
     ImageView imgDish;
@@ -82,8 +91,32 @@ public class DialogAddMenuItem extends DialogFragment {
                 else{
                     ref= FirebaseDatabase.getInstance().getReference();
                     String id=ref.push().getKey();
-                    Item item=new Item(id,edtName.getText().toString(),uri.toString(),edtPrice.getText().toString());
-                    ref.child(id).setValue(item);
+                    final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child(id+"/");
+                    imgRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri link) {
+                                    uri=link;
+                                }
+                            });
+
+                        }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    Toast.makeText(getContext(),exception.toString(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                    Item item=new Item(id,
+                            edtName.getText().toString(),
+                            Integer.valueOf(edtPrice.getText().toString()),
+                            uri.toString(),UUID.randomUUID().toString());
+                    ref.child("Menu").child(id).setValue(item);
+
 
 
                     Toast.makeText(getContext(), "Successfully Added "+edtName.getText().toString(), Toast.LENGTH_SHORT).show();
