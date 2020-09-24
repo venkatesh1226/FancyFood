@@ -51,24 +51,24 @@
             android:layout_marginTop="20dp"
             android:textStyle=""
             android:layout_toRightOf="@+id/card"/>
-        <Button
+        <ImageButton
             android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Edit"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_edit"
             android:drawablePadding="5dp"
             android:layout_alignParentEnd="true"/>
-        <Button
+        <ImageButton
             android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="20dp"
-            android:text="Delete"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_delete"
+            android:layout_marginTop="20dp"
             android:drawablePadding="10dp"
-            android:backgroundTint="#FD0404"
+
             android:layout_below="@+id/edit"
             android:layout_alignParentEnd="true"/>
 

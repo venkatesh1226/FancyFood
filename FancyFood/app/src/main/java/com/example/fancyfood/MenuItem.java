@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -42,8 +43,20 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
     @Override
     protected void onBindViewHolder(@NonNull MenuViewHolder holder, final int i, @NonNull final Item item) {
 
+        if (item.getImage().equals("")){
+            Log.e("e","null");
+            final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child("Menu").child(item.getId());
+            imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    ref.child(item.getId()).child("image").setValue(uri.toString());
+                    Log.e("error",uri.toString());
+                    Log.e("Item",item.getImage().toString());
+                }
+            });
+        }
 
-        Glide.with(context).load(Uri.parse(item.getImage())).override(100,120).into(holder.dishImage);
+        Glide.with(context).load(item.getImage()).override(100,120).into(holder.dishImage);
         holder.txtName.setText(item.getName());
         holder.txtPrice.setText(String.valueOf(item.getPrice())+"₹");
         holder.delete.setOnClickListener(new View.OnClickListener(){
@@ -84,7 +97,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
                             return;
                         }
                         ref.child(item.getId()).removeValue();
-                        final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child(item.getId()+"/");
+                        final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child("Menu").child(item.getId());
                         imgRef.delete();
                         Toast.makeText(context, "Deleted "+item.getName(), Toast.LENGTH_SHORT).show();
                     }
@@ -105,7 +118,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
     public class MenuViewHolder extends RecyclerView.ViewHolder{
         ImageView dishImage;
         TextView txtName,txtPrice;
-        Button edit,delete;
+        ImageButton edit,delete;
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
              dishImage=itemView.findViewById(R.id.img_dish);

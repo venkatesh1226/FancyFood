@@ -42,6 +42,7 @@ public class DialogAddMenuItem extends DialogFragment {
     TextView txtImage;
     DatabaseReference ref;
     Uri uri;
+    Uri uri2;
     public static final int PICK_IMAGE=404;
 
     @Nullable
@@ -90,15 +91,22 @@ public class DialogAddMenuItem extends DialogFragment {
                 }
                 else{
                     ref= FirebaseDatabase.getInstance().getReference();
-                    String id=ref.push().getKey();
-                    final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child(id+"/");
+                    final String id=ref.push().getKey();
+                    Item item=new Item(id,
+                            edtName.getText().toString(),
+                            Integer.valueOf(edtPrice.getText().toString()),
+                            "",UUID.randomUUID().toString());
+                    ref.child("Menu").child(id).setValue(item);
+                    final StorageReference imgRef= FirebaseStorage.getInstance().getReference().child("Menu").child(id);
                     imgRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri link) {
-                                    uri=link;
+                                    uri2=link;
+                                    Log.e("Link",link.toString());
+                                    ref.child("Menu").child(id).child("image").setValue(link.toString());
                                 }
                             });
 
@@ -110,13 +118,6 @@ public class DialogAddMenuItem extends DialogFragment {
                                     Toast.makeText(getContext(),exception.toString(),Toast.LENGTH_SHORT).show();
                                 }
                             });
-
-                    Item item=new Item(id,
-                            edtName.getText().toString(),
-                            Integer.valueOf(edtPrice.getText().toString()),
-                            uri.toString(),UUID.randomUUID().toString());
-                    ref.child("Menu").child(id).setValue(item);
-
 
 
                     Toast.makeText(getContext(), "Successfully Added "+edtName.getText().toString(), Toast.LENGTH_SHORT).show();
