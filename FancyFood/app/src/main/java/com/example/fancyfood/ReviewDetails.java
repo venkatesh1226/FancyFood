@@ -3,25 +3,36 @@ package com.example.fancyfood;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ReviewDetails extends AppCompatActivity {
 
@@ -30,7 +41,9 @@ public class ReviewDetails extends AppCompatActivity {
     LinearLayout linearLayout,ll;
     TextView resName,resAddress,resYear,resArea,resPhoneno,resCuisines;
     FirebaseDatabase fd;
+    FirebaseStorage fStorage;
     DatabaseReference database;
+    StorageReference storage;
 
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     @Override
@@ -67,16 +80,50 @@ public class ReviewDetails extends AppCompatActivity {
         linearLayout.addView(iv);
     }
     public void createUser(View view){
+        uploadResDetails();
+    }
+    public void uploadResDetails(){
+        final ProgressDialog pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Uploading Details....");
+        pDialog.show();
         String rName = bundle.getString("resName");
         String rAddress = bundle.getString("resAddress");
         String rArea = bundle.getString("reArea");
         String rYear = bundle.getString("resYear");
         String rPhoneno = bundle.getString("resPhoneno");
         String rCuisines = bundle.getString("resCuisines");
-        CreateUser cUser = new CreateUser(rName,rAddress,rYear,rPhoneno,rArea,rCuisines);
+        final String uid = UUID.randomUUID().toString();
+        CreateUser cUser = new CreateUser(rName,rAddress,rYear,rPhoneno,rArea,rCuisines,uid);
         fd = FirebaseDatabase.getInstance();
+        fStorage = FirebaseStorage.getInstance();
         database = fd.getReference("Restaurant");
-        database.child(rPhoneno).setValue(cUser);
-
+        database.child(uid).setValue(cUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                pDialog.dismiss();
+                Toast.makeText(ReviewDetails.this,"Uploading details is successful",Toast.LENGTH_LONG).show();
+                uploadResImages(uid);
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pDialog.dismiss();
+                Toast.makeText(ReviewDetails.this,"Uploading details is unsuccessful",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void uploadResImages(String uid){
+        final ProgressDialog pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Uploading Restaurant Images");
+        pDialog.show();
+        storage = fStorage.getReference("Restaurant Images");
+        StorageReference ref =storage.child(uid);
+        for(int i=0;i<imagesUriList.size();i++) {
+            ref.child("image " + (i + 1)).putFile(imagesUriList.get(i));
+            if(i==imagesUriList.size()-1){
+                pDialog.dismiss();
+                Toast.makeText(ReviewDetails.this,"Uploading images is successful",Toast.LENGTH_LONG).show();
+        }}
     }
 }
