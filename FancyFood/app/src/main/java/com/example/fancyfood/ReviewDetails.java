@@ -102,7 +102,7 @@ public class ReviewDetails extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 pDialog.dismiss();
                 Toast.makeText(ReviewDetails.this,"Uploading details is successful",Toast.LENGTH_LONG).show();
-                uploadResImages(uid);
+
             }
         })
         .addOnFailureListener(new OnFailureListener() {
@@ -112,18 +112,18 @@ public class ReviewDetails extends AppCompatActivity {
                 Toast.makeText(ReviewDetails.this,"Uploading details is unsuccessful",Toast.LENGTH_LONG).show();
             }
         });
+        uploadResImages(uid);
     }
     public void uploadResImages(String uid){
-        final ProgressDialog pDialog = new ProgressDialog(this);
-        pDialog.setTitle("Uploading Restaurant Images");
-        pDialog.show();
+        final ProgressDialog piDialog = new ProgressDialog(this);
+        piDialog.setTitle("Uploading Restaurant Images");
+        piDialog.show();
         storage = fStorage.getReference("Restaurant Images");
         StorageReference ref =storage.child(uid);
         for(int i=0;i<imagesUriList.size();i++) {
             ref.child("image " + (i + 1)).putFile(imagesUriList.get(i));
-            if(i==imagesUriList.size()-1){
-                pDialog.dismiss();
-                Toast.makeText(ReviewDetails.this,"Uploading images is successful",Toast.LENGTH_LONG).show();
-        }}
+        }
+            piDialog.dismiss();
+            Toast.makeText(ReviewDetails.this,"Uploading images is successful",Toast.LENGTH_LONG).show();
     }
 }

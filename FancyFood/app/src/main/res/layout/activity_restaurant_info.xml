@@ -21,7 +21,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/gradient_amber"
             android:fontFamily="@font/lemonada_bold"
             android:padding="20dp"
@@ -53,7 +52,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/restaurant_name"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Address:"
@@ -108,7 +106,6 @@
             android:id="@+id/id_phno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/area"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Phone Number:"
@@ -129,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your phone number"
-            android:inputType="number"
+            android:inputType="phone"
             android:maxLength="10"
             android:padding="10dp"
             android:textStyle="italic" />
@@ -154,7 +151,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cuisines_offered"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Add some photos of your restaurant"
@@ -165,7 +161,6 @@
             android:id="@+id/btn_add_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/add_photos"
             android:onClick="browsingFiles"
             android:text="BROWSE FILES"
             android:focusable="true"/>
@@ -174,22 +169,22 @@
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/btn_add_photos"
-            android:orientation="vertical" />
+            android:orientation="vertical"/>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             >
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:foreground="@drawable/ic_next"
-            android:onClick="nextButton"
-            app:backgroundTint="#1DA5E3"
-            app:backgroundTintMode="screen" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:foreground="@drawable/ic_next"
+                android:onClick="nextButton"
+                app:backgroundTint="#07B1AB"
+                app:backgroundTintMode="screen" />
         </RelativeLayout>
     </LinearLayout>
 

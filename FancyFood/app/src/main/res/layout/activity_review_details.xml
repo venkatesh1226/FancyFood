@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:scrollbarSize="10dp"
     android:orientation="horizontal"
     android:layout_height="match_parent"
     tools:context=".ReviewDetails">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,14 +42,14 @@
                 android:id="@+id/review_res_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:textSize="20sp"
                 android:id="@+id/review_res_address"/>
             <TextView
@@ -53,19 +57,19 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:id="@+id/review_res_year"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:id="@+id/review_res_area"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:id="@+id/review_res_phoneno"/>
@@ -74,17 +78,21 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/advent_pro"
+                android:fontFamily="@font/advent_pro_bold"
                 android:id="@+id/review_res_cuisines"/>
-
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:foreground="@drawable/ic_next"
+                android:onClick="createUser"
+                app:backgroundTint="#13AAEA" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/ic_next"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:onClick="createUser" />
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
