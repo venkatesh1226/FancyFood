@@ -1,9 +1,11 @@
 package com.example.fancyfood;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -39,6 +42,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
     }
 
     private Context context;
+    private AppCompatActivity activity;
 
     @Override
     protected void onBindViewHolder(@NonNull MenuViewHolder holder, final int i, @NonNull final Item item) {
@@ -68,7 +72,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
         holder.edit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                edit(i);
+                edit(item);
             }
         });
         Log.e("Error",item.toString());
@@ -80,6 +84,7 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
 
         context=parent.getContext();
         final View view = LayoutInflater.from(context).inflate(menu_item,parent,false);
+        activity=(AppCompatActivity)view.getContext();
         ref=FirebaseDatabase.getInstance().getReference().child("Menu/");
         return new MenuViewHolder(view);
     }
@@ -111,7 +116,14 @@ public class MenuItem  extends FirebaseRecyclerAdapter<Item, MenuItem.MenuViewHo
         builder.create().show();
     }
 
-    private void edit(int i){
+    private void edit(Item i){
+
+        DialogEditMenuItem editDialog=new DialogEditMenuItem();
+        Bundle bundle =new Bundle();
+        bundle.putParcelable("MENU_ITEM",i);
+        editDialog.setArguments(bundle);
+        editDialog.show(activity.getSupportFragmentManager(),new String(""));
+
 
     }
 
