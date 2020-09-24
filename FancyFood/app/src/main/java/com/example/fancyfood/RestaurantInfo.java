@@ -3,6 +3,7 @@ package com.example.fancyfood;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class RestaurantInfo extends AppCompatActivity {
     final int PICK_IMAGE = 1;
     LinearLayout linearLayout;
     Bundle bundle = new Bundle();
+    int i = 1 , j = 51;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +63,28 @@ public class RestaurantInfo extends AppCompatActivity {
         }
     }
     public void viewImages(){
+       final Button b = new Button(this);
         final ImageView iv = new ImageView(getApplicationContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         iv.setLayoutParams(params);
+        b.setLayoutParams(params);
+        iv.setId(i);
+        b.setId(j);
+        i++;
+        j++;
         final Uri uri = imageUriList.get(imageUriList.size()-1);
         iv.setImageURI(uri);
+        b.setBackgroundResource(R.drawable.ic_delete);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeView(findViewById(b.getId()));
+                linearLayout.removeView(findViewById((b.getId())-50));
+                imageUriList.remove((b.getId())-51);
+            }
+        });
         linearLayout.addView(iv);
+        linearLayout.addView(b);
     }
    public void nextButton(View view){
                 if(rName.length()==0)

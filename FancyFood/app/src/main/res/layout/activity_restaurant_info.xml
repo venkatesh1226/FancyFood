@@ -11,8 +11,8 @@
     android:scrollbarSize="10dp"
     tools:context=".RestaurantInfo">
 
-    <LinearLayout
-        android:id="@+id/rela"
+    <RelativeLayout
+        android:id="@+id/relat"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,6 +25,8 @@
             android:fontFamily="@font/lemonada_bold"
             android:padding="20dp"
             android:text="RESTAURANT  INFO"
+            android:id="@+id/res_info"
+            android:layout_centerHorizontal="true"
             android:textColor="#020202"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -32,6 +34,7 @@
 
         <TextView
             android:id="@+id/id_r_name"
+            android:layout_below="@+id/res_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/abhaya_libre_bold"
@@ -43,6 +46,7 @@
 
         <EditText
             android:id="@+id/restaurant_name"
+            android:layout_below="@+id/id_r_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Please enter your restaurant name"
@@ -52,14 +56,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_name"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
+            android:id="@+id/id_address"
             android:text="Address:"
             android:textColor="#0C0C0C"
             android:textSize="24sp" />
 
         <EditText
             android:id="@+id/restaurant_address"
+            android:layout_below="@+id/id_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Please enter your restaurant address here"
@@ -69,6 +76,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_address"
+            android:id="@+id/id_year_started"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="In which year the reataurant was started:"
@@ -77,6 +86,7 @@
 
         <EditText
             android:id="@+id/restaurant_year_started"
+            android:layout_below="@+id/id_year_started"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your year"
@@ -87,6 +97,8 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_below="@+id/restaurant_year_started"
+            android:id="@+id/id_area"
             android:layout_height="wrap_content"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
@@ -96,6 +108,7 @@
 
         <EditText
             android:id="@+id/area"
+            android:layout_below="@+id/id_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your area"
@@ -104,6 +117,7 @@
 
         <TextView
             android:id="@+id/id_phno"
+            android:layout_below="@+id/area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/abhaya_libre_bold"
@@ -115,9 +129,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/id_phno"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="+91"
+            android:id="@+id/id_indian_number"
             android:textColor="#0C0C0C"
             android:textSize="20sp" />
 
@@ -127,6 +143,8 @@
             android:layout_height="wrap_content"
             android:hint="Enter your phone number"
             android:inputType="phone"
+            android:layout_toRightOf="@+id/id_indian_number"
+            android:layout_below="@+id/id_phno"
             android:maxLength="10"
             android:padding="10dp"
             android:textStyle="italic" />
@@ -134,6 +152,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/id_indian_number"
+            android:id="@+id/id_cuisines"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
             android:text="Cuisines Offered:"
@@ -146,6 +166,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter your cuisines here"
             android:padding="10dp"
+            android:layout_below="@id/id_cuisines"
             android:textStyle="italic" />
 
         <TextView
@@ -153,6 +174,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/abhaya_libre_bold"
             android:padding="10dp"
+            android:layout_below="@+id/cuisines_offered"
+            android:id="@+id/id_photos_add_text"
             android:text="Add some photos of your restaurant"
             android:textColor="#0C0C0C"
             android:textSize="24sp" />
@@ -162,6 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="browsingFiles"
+            android:layout_below="@+id/id_photos_add_text"
             android:text="BROWSE FILES"
             android:focusable="true"/>
 
@@ -169,10 +193,12 @@
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            android:layout_below="@+id/btn_add_photos"/>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/ll"
             >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -186,6 +212,6 @@
                 app:backgroundTint="#07B1AB"
                 app:backgroundTintMode="screen" />
         </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>
