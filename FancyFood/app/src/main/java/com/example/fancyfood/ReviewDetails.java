@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -125,5 +129,20 @@ public class ReviewDetails extends AppCompatActivity {
         }
             piDialog.dismiss();
             Toast.makeText(ReviewDetails.this,"Uploading images is successful",Toast.LENGTH_LONG).show();
+    }
+    public void updateDetails(MenuItem menuItem){
+
+    }
+    public void updateImages(MenuItem menuItem){
+        Intent i = new Intent(ReviewDetails.this,Review.class);
+        i.putExtra("uri",imagesUriList);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.review_buttons,menu);
+        return true;
     }
 }

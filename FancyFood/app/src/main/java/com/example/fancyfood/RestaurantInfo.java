@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,15 +15,18 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,7 +34,7 @@ import java.util.ArrayList;
 
 public class RestaurantInfo extends AppCompatActivity {
     EditText rName,rAddress,rPhoneNo,rYear,rCuisines,rArea;
-    public ArrayList<Uri> imageUriList = new ArrayList<>();
+    public ArrayList<Uri> imageUri = new ArrayList<>();
     final int PICK_IMAGE = 1;
     LinearLayout linearLayout;
     Bundle bundle = new Bundle();
@@ -58,33 +64,16 @@ public class RestaurantInfo extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && null != data.getData()) {
-            imageUriList.add(data.getData());
-            viewImages();
+            viewImages(data.getData());
         }
     }
-    public void viewImages(){
-       final Button b = new Button(this);
-        final ImageView iv = new ImageView(getApplicationContext());
+    public void viewImages(Uri uri){
+        imageUri.add(uri);
+        ImageView iv = new ImageView(this);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         iv.setLayoutParams(params);
-        b.setLayoutParams(params);
-        iv.setId(i);
-        b.setId(j);
-        i++;
-        j++;
-        final Uri uri = imageUriList.get(imageUriList.size()-1);
         iv.setImageURI(uri);
-        b.setBackgroundResource(R.drawable.ic_delete);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                linearLayout.removeView(findViewById(b.getId()));
-                linearLayout.removeView(findViewById((b.getId())-50));
-                imageUriList.remove((b.getId())-51);
-            }
-        });
         linearLayout.addView(iv);
-        linearLayout.addView(b);
     }
    public void nextButton(View view){
                 if(rName.length()==0)
@@ -99,13 +88,13 @@ public class RestaurantInfo extends AppCompatActivity {
                     rCuisines.setError("Cuisines cannot be empty");
                 if(rArea.length()==0)
                     rArea.setError("Area cannot be empty");
-                if(imageUriList.size()==0)
+                if(imageUri.size()==0)
                     Toast.makeText(this,"Please provide some photos",Toast.LENGTH_LONG).show();
-                else{
+                if(rName.length()!=0&&rAddress.length()!=0&&rPhoneNo.length()!=0&&rYear.length()!=0&&rCuisines.length()!=0&&rArea.length()!=0&&imageUri.size()!=0){
                     resInfo();
                     Intent i = new Intent(RestaurantInfo.this,ReviewDetails.class);
                     i.putExtras(bundle);
-                    i.putExtra("uriList",imageUriList);
+                    i.putExtra("uriList",imageUri);
                     startActivity(i);
                 }
     }

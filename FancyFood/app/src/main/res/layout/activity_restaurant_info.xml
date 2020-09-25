@@ -189,29 +189,29 @@
             android:text="BROWSE FILES"
             android:focusable="true"/>
 
-        <LinearLayout
-            android:id="@+id/ll"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_below="@+id/btn_add_photos"/>
-        <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_add_photos"
+        android:orientation="vertical"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ll"
-            >
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:foreground="@drawable/ic_next"
-                android:onClick="nextButton"
-                app:backgroundTint="#07B1AB"
-                app:backgroundTintMode="screen" />
-        </RelativeLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:foreground="@drawable/ic_next"
+            android:onClick="nextButton"
+            app:backgroundTint="#07B1AB"
+            app:backgroundTintMode="screen" />
     </RelativeLayout>
-
+    </RelativeLayout>
 </ScrollView>
