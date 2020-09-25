@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".SignIn">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,9 +15,7 @@
         android:textColor="@color/cardview_dark_background"
         android:textSize="40dp"
         android:textStyle="bold"
-        android:id="@+id/tvWelcome"
         tools:ignore="MissingConstraints" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -35,7 +32,6 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
@@ -52,7 +48,8 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:textColorHint="@color/cardview_dark_background" />
+            android:textColorHint="@color/cardview_dark_background"
+            />
 
         <EditText
             android:id="@+id/etPassword"
@@ -66,24 +63,13 @@
             android:padding="15dp"
             android:textColorHint="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/etConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
 
-            android:hint="confirm Password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColorHint="@color/cardview_dark_background" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/buRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -91,21 +77,27 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/cardview_dark_background"
-                android:text="Sign Up"
+                android:text="SignIn"
+                android:id="@+id/buSignIn"
+                android:textStyle="bold"
                 android:textColor="@color/cardview_light_background"
-                android:textStyle="bold" />
+                android:backgroundTint="@color/cardview_dark_background"/>
+
+            />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="30dp"
-                android:text="Sign Up"
+                android:layout_marginStart="30dp"
+                android:text="Sign In"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+
+                tools:ignore="PrivateResource" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -120,24 +112,28 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="30dp"
-                android:text="Existing User?"
+                android:text="New User"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+
+
             <Button
-                android:id="@+id/buSignInAction"
+                android:id="@+id/buSignUpAction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/existing"
                 android:backgroundTint="@color/cardview_dark_background"
-                android:onClick="SignInAction"
-                android:text="Sign in"
-
+                android:shadowRadius="5"
+                android:text="Sign Up"
                 android:textColor="@color/cardview_light_background"
-                android:textStyle="bold" />
+                android:textColorHighlight="#C60101"
+
+                android:textStyle="bold"
+                android:onClick="SignUpAction"/>
 
 
         </RelativeLayout>
