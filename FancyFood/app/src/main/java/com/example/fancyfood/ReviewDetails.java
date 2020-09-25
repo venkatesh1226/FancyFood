@@ -7,40 +7,28 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class ReviewDetails extends AppCompatActivity {
 
-    ArrayList<Uri> imagesUriList;
+    public ArrayList<Uri> imagesUriList;
     Bundle bundle;
     LinearLayout linearLayout,ll;
     TextView resName,resAddress,resYear,resArea,resPhoneno,resCuisines;
@@ -48,7 +36,6 @@ public class ReviewDetails extends AppCompatActivity {
     FirebaseStorage fStorage;
     DatabaseReference database;
     StorageReference storage;
-
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,19 +117,15 @@ public class ReviewDetails extends AppCompatActivity {
             piDialog.dismiss();
             Toast.makeText(ReviewDetails.this,"Uploading images is successful",Toast.LENGTH_LONG).show();
     }
-    public void updateDetails(MenuItem menuItem){
-
-    }
-    public void updateImages(MenuItem menuItem){
-        Intent i = new Intent(ReviewDetails.this,Review.class);
-        i.putExtra("uri",imagesUriList);
-        startActivity(i);
+    public void review(MenuItem menuItem)
+    {
+        finish();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater m = getMenuInflater();
-        m.inflate(R.menu.review_buttons,menu);
+        MenuInflater m = new MenuInflater(this);
+        m.inflate(R.menu.revirew,menu);
         return true;
     }
 }
