@@ -62,4 +62,9 @@ public class MenuItemsActivity extends AppCompatActivity {
         super.onStop();
         menuItem.stopListening();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

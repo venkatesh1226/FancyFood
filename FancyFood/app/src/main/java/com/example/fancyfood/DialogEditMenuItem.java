@@ -100,7 +100,7 @@ public class DialogEditMenuItem extends DialogFragment {
                         }
 
                     }
-
+                        dismiss();
 
                 }
             }
@@ -110,11 +110,17 @@ public class DialogEditMenuItem extends DialogFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode==PICK_IMAGE&&data.getData()!=null&&resultCode== Activity.RESULT_OK){
-            dishImage.setImageURI(data.getData());
-            uri=data.getData();
-            changedImage=1;
+        try {
+            if (requestCode==PICK_IMAGE&&data.getData()!=null&&resultCode== Activity.RESULT_OK){
+                dishImage.setImageURI(data.getData());
+                uri=data.getData();
+                changedImage=1;
+            }
         }
+        catch(Exception e){
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 
