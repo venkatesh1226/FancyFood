@@ -37,7 +37,7 @@ public class SignUp extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),Welcome.class));
+            startActivity(new Intent(getApplicationContext(),MenuItemsActivity.class));
             finish();
         }
         buRegister.setOnClickListener(new View.OnClickListener() {
