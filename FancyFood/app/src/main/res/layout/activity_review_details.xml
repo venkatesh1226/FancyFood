@@ -18,8 +18,8 @@
         android:scrollIndicators="bottom"
         >
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
             android:id="@+id/ll_images"
             android:orientation="horizontal"
             />
@@ -88,8 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:onClick="completedDetails"
                 android:foreground="@drawable/ic_next"
-                android:onClick="createUser"
                 app:backgroundTint="#13AAEA" />
             </RelativeLayout>
         </LinearLayout>

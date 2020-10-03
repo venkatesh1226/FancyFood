@@ -168,38 +168,10 @@
             android:padding="10dp"
             android:layout_below="@id/id_cuisines"
             android:textStyle="italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/abhaya_libre_bold"
-            android:padding="10dp"
-            android:layout_below="@+id/cuisines_offered"
-            android:id="@+id/id_photos_add_text"
-            android:text="Add some photos of your restaurant"
-            android:textColor="#0C0C0C"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/btn_add_photos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="browsingFiles"
-            android:layout_below="@+id/id_photos_add_text"
-            android:text="BROWSE FILES"
-            android:focusable="true"/>
-
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/btn_add_photos"
-        android:orientation="vertical"
-        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll"
+        android:layout_below="@+id/cuisines_offered"
         >
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
