@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abhaya_libre_bold</item>
+        <item>@font/advent_pro</item>
+        <item>@font/advent_pro_bold</item>
+        <item>@font/henny_penny</item>
+        <item>@font/lemonada_bold</item>
+    </array>
+</resources>
