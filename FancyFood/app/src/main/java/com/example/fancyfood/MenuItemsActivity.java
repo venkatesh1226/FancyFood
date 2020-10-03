@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,9 @@ public class MenuItemsActivity extends AppCompatActivity {
         menu.setAdapter(menuItem);
 
     }
+
+
+
     void listeners(){
         fab.setOnClickListener(new View.OnClickListener()
         {
@@ -48,7 +52,6 @@ public class MenuItemsActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(),"CreateAddMenuDialog");
             }
         });
-
     }
 
     @Override

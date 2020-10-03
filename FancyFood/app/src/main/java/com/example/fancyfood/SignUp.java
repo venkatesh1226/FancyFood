@@ -37,7 +37,7 @@ public class SignUp extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),MenuItemsActivity.class));
+            startActivity(new Intent(getApplicationContext(),RestaurantInfo.class));
             finish();
         }
         buRegister.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class SignUp extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(SignUp.this, "User Created", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(),MenuItemsActivity.class));
+                            startActivity(new Intent(getApplicationContext(),RestaurantInfo.class));
                             finish();
 
                         }
